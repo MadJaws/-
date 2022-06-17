@@ -1,0 +1,17 @@
+.button{
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    font-size: 30px;
+}
+
+.sum{
+    max-width: 285px;
+    min-width: 285px;
+    max-height: 50px;
+    min-height: 50px;
+    font-size: 25px;
+}
+.k0{
+    margin-left: 74px;
+}
