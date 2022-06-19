@@ -31,38 +31,69 @@ k0.onclick = function(){
 ksum.onclick = function(){
     document.getElementById('text').value+= ' + ';
 }
+kminus.onclick = function(){
+    document.getElementById('text').value+= ' - ';
+}
+kmulti.onclick = function(){
+    document.getElementById('text').value+= ' * ';
+}
+kdivision.onclick = function(){
+    document.getElementById('text').value+= ' / ';
+}
 ktotal.onclick = function(){
     let sum = document.getElementById('text').value;
     let sum1 = sum.split(' ');
     let number = [];
     let sum2 = 0;
     let sum3 = 0;
+    let sum4 = 0;
     for (let q of sum1){
-         if (q !='+'){
+         if ((q !='+') && (q !='-') && (q != '*') && (q != '/')){
             number.push (Number(q));
+            continue;
         }else{
             number.push (q);
+            continue;
         }
-    // } если '+' то сохранияем в новую переменную 1 и если эта переменная равна 1 то 
-    for (let i=0; i<number.length; i++ ){
+    } 
+    for (let i=0; i<number.length; i++){
+        if (number[i] === '*'){
+            sum4 = 1;
+        } else if (number[i] === '/'){
+            sum4 = 2;
+        } else if (sum4 === 1){
+            number[i] = number[i]*number[i-2];
+            number.splice(i-2,2);
+            i = i - 2;
+            sum4 = 0;
+        } else if(sum4 === 2){
+            number[i] = number[i-2]/number[i];
+            number.splice(i-2,2)
+            i = i -2;
+            sum4 = 0;
+        } 
+        console.log(number);
+    } 
+    console.log(number);
+     for (let i=0; i<number.length; i++ ){
         if (number[i] === '+'){
              sum3 = 1;
             continue;
-        } else if(sum3 = 1){
+        }else if(number[i] === '-'){
+            sum3 = 2;
+            continue;
+        }else if(sum3 === 2){
+            sum2 = sum2 - number[i];
+            sum3 = 0;
+            continue;
+        } else if(sum3 === 1){
             sum2 += number[i];
+            sum3 = 0;
             continue;
         } else {
             sum2 += number[i];
             continue;
         }
-        
-    }
-    // console.log(number)
-   
-    console.log(sum2)
-    
-    // console.log(sum);
-    // console.log(sum1);
-    // console.log(typeof(sum1))
-}
-}
+} console.log(sum2);
+document.getElementById('text').value = sum2;
+} 
