@@ -36,18 +36,24 @@ ktotal.onclick = function(){
     let sum1 = sum.split(' ');
     let number = [];
     let sum2 = 0;
+    let sum3 = 0;
     for (let q of sum1){
          if (q !='+'){
             number.push (Number(q));
         }else{
             number.push (q);
         }
-    }
-    for (let w of number){
-        if (w === '+'){
-            sum2 += w; 
+    // } если '+' то сохранияем в новую переменную 1 и если эта переменная равна 1 то 
+    for (let i=0; i<number.length; i++ ){
+        if (number[i] === '+'){
+             sum3 = 1;
+            continue;
+        } else if(sum3 = 1){
+            sum2 += number[i];
+            continue;
         } else {
-            sum2 += w;
+            sum2 += number[i];
+            continue;
         }
         
     }
@@ -58,4 +64,5 @@ ktotal.onclick = function(){
     // console.log(sum);
     // console.log(sum1);
     // console.log(typeof(sum1))
+}
 }
